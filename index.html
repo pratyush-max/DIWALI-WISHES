@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Diwali Wishes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebcc;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff6600; /* Updated for better visibility */
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff9900;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #cc7a00;
+        }
+
+        .message {
+            margin-top: 30px;
+            font-size: 1.5em;
+            display: none;
+            color: #663300; /* Darker color for visibility */
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        /* Diya videos (initially hidden) */
+        .diya {
+            display: none; /* Hidden until animation starts */
+        }
+
+        /* Diya floating animation */
+        .diya {
+            position: absolute;
+            bottom: 10%;
+            width: 80px;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .diya-left {
+            left: 10%;
+        }
+
+        .diya-right {
+            right: 10%;
+        }
+
+        /* Back button (initially hidden) */
+        .back-button {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Diwali!</h1>
+    <div id="inputDiv">
+        <p>Please enter your name:</p>
+        <input type="text" id="nameInput" placeholder="Your Name" />
+        <button onclick="startAnimations()">Submit</button>
+    </div>
+
+    <div class="message" id="message"></div>
+    <button class="back-button" id="backButton" onclick="goBack()">Back</button>
+
+    <footer>
+        <p>From Pratyush Pratim Thakur<3</p>
+    </footer>
+
+    <!-- Floating diya videos -->
+    <video class="diya diya-left" autoplay loop muted>
+        <source src="videos/VID-20241030-WA0000.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <video class="diya diya-right" autoplay loop muted>
+        <source src="videos/VID-20241030-WA0000.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function startAnimations() {
+            const name = document.getElementById('nameInput').value;
+            const messageDiv = document.getElementById('message');
+            const inputDiv = document.getElementById('inputDiv');
+            const backButton = document.getElementById('backButton');
+            const diyas = document.querySelectorAll('.diya');
+
+            if (name) {
+                const wishes = `Wishing you a Diwali full of lights and joy, ${name}!`;
+                const quote = `"Let this Diwali burn all your bad times and enter you in good times."`;
+
+                // Display the message
+                messageDiv.innerHTML = `<p>${wishes}</p><p>${quote}</p>`;
+                messageDiv.style.display = 'block';
+
+                // Hide input and show back button
+                inputDiv.style.display = 'none';
+                backButton.style.display = 'block';
+
+                // Start diya animations
+                diyas.forEach(diya => diya.style.display = 'block');
+            } else {
+                alert('Please enter your name!');
+            }
+        }
+
+        function goBack() {
+            const inputDiv = document.getElementById('inputDiv');
+            const messageDiv = document.getElementById('message');
+            const backButton = document.getElementById('backButton');
+            const diyas = document.querySelectorAll('.diya');
+
+            // Reset UI
+            inputDiv.style.display = 'block';
+            messageDiv.style.display = 'none';
+            backButton.style.display = 'none';
+            document.getElementById('nameInput').value = '';
+
+            // Hide diya animations
+            diyas.forEach(diya => diya.style.display = 'none');
+        }
+    </script>
+
+</body>
+</html>
